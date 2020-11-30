@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container"
 function SearchBar() {
       //providing initial value of book as empty
         //book is a string because thats what user types 
-        const [book, setBook] = useState("hitting in the hook but not down"); 
+        const [book, setBook] = useState(""); 
         //result is an array in the useState hook bc it will display items being called from Google API 
         const [result, setResult] = useState([])
         //Here is my APIKey from Google, where I will be compromised if searched publicly. 
@@ -18,22 +18,25 @@ function SearchBar() {
 
     function handleChange(e) {
 
-        const book = e.target.value;
+        const bookTypingOnChange = e.target.value;
 
+        console.log('in the on submit!!',bookTypingOnChange);
         //Initializing Value to variable book
-        setBook("this is us hitting the book we typed!", book);
+        setBook(bookTypingOnChange);
     }
       
 
     function handleSubmit(e) {
 
         e.preventDefault();
-
+        // const bookTyping = e.target.value;
         
-        console.log(book);
+        console.log('iBook from the state!! button clcike!! end to API!!!',book);
+        // setBook(bookTyping);
 
     }
 
+    console.log('BOOK STATE!!', book)
     return (
         <Container className="search-bar-style" maxWidth="md">
             <TextField  
@@ -43,8 +46,8 @@ function SearchBar() {
             //onSubmit={handleSubmit} 
             />
             <form onSubmit={handleSubmit}>
-            <input placeholder="search" onSubmit={handleSubmit}></input>
-            <button  onChange={handleChange}>Search</button>
+            <input placeholder="search" onChange={handleChange}></input>
+            {/* <button  onChange={handleChange}>Search</button> */}
             </form>
 
             <br></br>
