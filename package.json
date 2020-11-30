@@ -1,0 +1,31 @@
+{
+  "name": "react-googlebook-search",
+  "version": "1.0.0",
+  "description": "This is a React Application to render GoogleBooks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CKalama/React-GoogleBook-Search.git"
+  },
+  "author": "Chris Kalama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CKalama/React-GoogleBook-Search/issues"
+  },
+  "homepage": "https://github.com/CKalama/React-GoogleBook-Search#readme",
+  "dependencies": {
+    "concurrency": "^0.1.4",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4"
+  }
+}
