@@ -4,9 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Favorites from "./pages/Favorites"
+import Home from "./pages/Home"
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App>
+      {/* <Route path="/" component={Home} />
+      <Route path="favorites" component={Favorites} /> */}
+      
+      </App> 
   </React.StrictMode>,
   document.getElementById('root')
 );
