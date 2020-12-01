@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField"
 import Container from "@material-ui/core/Container"
+import FormGroup from "@material-ui/core/FormGroup"
 import API from "../utils/API"
 
 
@@ -21,7 +22,7 @@ function SearchBar() {
 
         const bookTypingOnChange = e.target.value;
 
-        console.log('in the on submit!!',bookTypingOnChange);
+        //console.log('in the on submit!!',bookTypingOnChange);
         //Initializing Value to variable book
         setBook(bookTypingOnChange);
     }
@@ -32,7 +33,7 @@ function SearchBar() {
         e.preventDefault();
 
         API.getPosts(book).then((res) => {
-            console.log(res.data.items)
+            //console.log(res.data.items)
             setResult(res.data.items)
         })
        
@@ -58,7 +59,8 @@ function SearchBar() {
             id="outlined-basic" 
             label="Search a Book" 
             variant="outlined"
-            //onSubmit={handleSubmit} 
+            onSubmit={handleSubmit} 
+            onChange={handleChange}
             />
             <form onSubmit={handleSubmit}>
             <input placeholder="search" onChange={handleChange}></input>
@@ -72,16 +74,12 @@ function SearchBar() {
             variant="contained" 
             color="secondary" 
             //onClick={() => (console.log("button!"))}
-            onChange={handleChange}
+            onChange={handleSubmit}
 
             >
             
             Search
             </Button>
-
-
-           
-
 
           {result.map((eachBook) => {
               return (
