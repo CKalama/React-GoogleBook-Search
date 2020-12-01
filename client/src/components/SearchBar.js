@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField"
 import Container from "@material-ui/core/Container"
-import FormGroup from "@material-ui/core/FormGroup"
 import API from "../utils/API"
+import "../App.css";
 
 
 
@@ -33,7 +33,7 @@ function SearchBar() {
         e.preventDefault();
 
         API.getPosts(book).then((res) => {
-            //console.log(res.data.items)
+            console.log(res.data.items)
             setResult(res.data.items)
         })
        
@@ -52,16 +52,16 @@ function SearchBar() {
 
 
     //console.log('BOOK STATE!!', book)
-    console.log(result);
+    //console.log(result);
     return (
         <Container className="search-bar-style" maxWidth="md">
-            <TextField  
+            {/* <TextField  
             id="outlined-basic" 
             label="Search a Book" 
             variant="outlined"
             onSubmit={handleSubmit} 
             onChange={handleChange}
-            />
+            /> */}
             <form onSubmit={handleSubmit}>
             <input placeholder="search" onChange={handleChange}></input>
             <button  onChange={handleSubmit}>Search</button>
@@ -70,7 +70,7 @@ function SearchBar() {
             <br></br>
             <br></br>
 
-            <Button 
+            {/* <Button 
             variant="contained" 
             color="secondary" 
             //onClick={() => (console.log("button!"))}
@@ -79,13 +79,24 @@ function SearchBar() {
             >
             
             Search
-            </Button>
+            </Button> */}
+
+            <hr></hr>
 
           {result.map((eachBook) => {
               return (
-                  <div>
+                  <div className="book-output">
+                    <img src={eachBook.volumeInfo.imageLinks.thumbnail} alt="Book-Img" id="book-img"></img>
                     <h1>{eachBook.volumeInfo.title}</h1>
-                    <button onClick={() => {saveBook(eachBook)}}>Fav!</button>
+                        <h3>{eachBook.volumeInfo.authors}</h3>
+                        <a href={eachBook.saleInfo.buyLink} target="_blank" rel="noreferrer" className="book-link">Buy On GoogleBooks</a>
+                        <br></br>
+                        <br></br>
+                    
+                    <footer>   
+                    <button onClick={() => {saveBook(eachBook)}}>Save to Favorites</button>
+                    <hr></hr>
+                    </footer>
                 </div>
               )
           })}  

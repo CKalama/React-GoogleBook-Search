@@ -13,3 +13,21 @@
   padding:15px;
   
 }
+
+.book-output h1,h3 {
+  text-align: center;
+
+}
+
+.book-link {
+  text-align:center;
+}
+
+
+#book-img {
+  border:5px solid green;
+  width:250px;
+  margin-left: 305px;
+}
+
+
