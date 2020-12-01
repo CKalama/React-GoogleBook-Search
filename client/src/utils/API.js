@@ -4,7 +4,7 @@ import axios from "axios"
 export default {
     // Gets all posts
     getPosts: function(searchResult) {
-      return axios.get(`https://www.googleapis.com/books/v1/volumes?q=` + `${searchResult}` + `&filter=free-ebooks&key=AIzaSyC9GWvnyd_oeBTnavwPxMOONUMq8eZ56hI`);
+      return axios.get(`https://www.googleapis.com/books/v1/volumes?q=` + `${searchResult}` + `&filter=paid-ebooks&key=AIzaSyC9GWvnyd_oeBTnavwPxMOONUMq8eZ56hI`);
     },
     // Gets the post with the given id
     getPost: function(id) {
