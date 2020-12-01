@@ -1,5 +1,7 @@
 const express = require('express');
 const routes = require("./routes");
+const mongoose = require('mongoose');
+
 
 //instance of Express
 const app = express();
@@ -17,8 +19,15 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
 };
 
+
+//Setting up API to put favorites into MongoDB
+// app.get()
+
 //API and View Routes 
 app.use(routes);
+
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/GoogleBook_db");
 
 //Fire up Server
 app.listen(PORT, () => {

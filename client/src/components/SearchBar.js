@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField"
 import Container from "@material-ui/core/Container"
+import API from "../utils/API"
 
 
 
@@ -29,14 +30,28 @@ function SearchBar() {
     function handleSubmit(e) {
 
         e.preventDefault();
-        // const bookTyping = e.target.value;
-        
-        console.log('iBook from the state!! button clcike!! end to API!!!',book);
-        // setBook(bookTyping);
+
+        API.getPosts(book).then((res) => {
+            console.log(res.data.items)
+            setResult(res.data.items)
+        })
+       
 
     }
 
-    console.log('BOOK STATE!!', book)
+    function saveBook(book) {
+        // e.preventDefault();
+
+        API.savePost(book).then((resFromBackendRoute) => {
+            console.log(resFromBackendRoute)
+        })
+    }
+
+   
+
+
+    //console.log('BOOK STATE!!', book)
+    console.log(result);
     return (
         <Container className="search-bar-style" maxWidth="md">
             <TextField  
@@ -47,7 +62,7 @@ function SearchBar() {
             />
             <form onSubmit={handleSubmit}>
             <input placeholder="search" onChange={handleChange}></input>
-            {/* <button  onChange={handleChange}>Search</button> */}
+            <button  onChange={handleSubmit}>Search</button>
             </form>
 
             <br></br>
@@ -63,7 +78,19 @@ function SearchBar() {
             
             Search
             </Button>
-            
+
+
+           
+
+
+          {result.map((eachBook) => {
+              return (
+                  <div>
+                    <h1>{eachBook.volumeInfo.title}</h1>
+                    <button onClick={() => {saveBook(eachBook)}}>Fav!</button>
+                </div>
+              )
+          })}  
             
         </Container>
     )
