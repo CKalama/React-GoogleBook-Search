@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField"
+//import Button from "@material-ui/core/Button";
+//import TextField from "@material-ui/core/TextField"
 import Container from "@material-ui/core/Container"
 import API from "../utils/API"
 import "../App.css";
@@ -62,8 +62,9 @@ function SearchBar() {
             onSubmit={handleSubmit} 
             onChange={handleChange}
             /> */}
-            <form onSubmit={handleSubmit}>
-            <input placeholder="search" onChange={handleChange}></input>
+            <form onSubmit={handleSubmit} className="form-style">
+            <input placeholder="Type a Book Title..." onChange={handleChange} id="input-style"></input>
+            <br></br>
             <button  onChange={handleSubmit}>Search</button>
             </form>
 
